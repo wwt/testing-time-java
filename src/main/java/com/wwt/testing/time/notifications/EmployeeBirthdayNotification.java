@@ -3,7 +3,6 @@ package com.wwt.testing.time.notifications;
 import com.wwt.testing.time.Employee;
 
 import java.time.Clock;
-import java.time.LocalDate;
 import java.time.MonthDay;
 import java.util.Optional;
 
@@ -23,23 +22,22 @@ public class EmployeeBirthdayNotification implements NotificationGenerator<Emplo
 
     private Notification createNotification(Employee employee) {
         return Notification.of(
-            "Happy Birthday!",
-            String.format("Have a fabulous birthday %s!", employee.name())
+                "Happy Birthday!",
+                String.format("Have a fabulous birthday %s!", employee.name())
         );
     }
 
     private boolean isBirthday(Employee employee) {
         MonthDay today = MonthDay.now(clock);
-        LocalDate birthday = employee.birthday();
-        return isExactBirthday(birthday, today) || isLeapYearBirthday(birthday, today);
+        MonthDay birthday = MonthDay.from(employee.birthday());
+        return isBirthdayToday(birthday, today) || isLeapYearBirthday(birthday, today);
     }
 
-    private boolean isExactBirthday(LocalDate birthday, MonthDay today) {
-        return MonthDay.from(birthday).equals(today);
+    private boolean isBirthdayToday(MonthDay birthday, MonthDay today) {
+        return birthday.equals(today);
     }
 
-    private boolean isLeapYearBirthday(LocalDate birthday, MonthDay today) {
-        return MonthDay.from(birthday).equals(MonthDay.of(2, 29))
-                && today.equals(MonthDay.of(3, 1));
+    private boolean isLeapYearBirthday(MonthDay birthday, MonthDay today) {
+        return MonthDay.of(2, 29).equals(birthday) && MonthDay.of(3, 1).equals(today);
     }
 }
