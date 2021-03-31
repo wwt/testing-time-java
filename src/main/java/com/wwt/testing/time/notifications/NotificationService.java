@@ -2,16 +2,14 @@ package com.wwt.testing.time.notifications;
 
 import com.wwt.testing.time.Employee;
 
-import java.time.*;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class NotificationService {
-    private final List<NotificationGenerator<Employee>> generators = new ArrayList<>();
+    private final List<NotificationGenerator<Employee>> generators;
 
-    public NotificationService(Clock clock) {
-        generators.add(new EmployeeBirthdayNotification(clock));
+    public NotificationService(List<NotificationGenerator<Employee>> generators) {
+        this.generators = generators;
     }
 
     public List<Notification> generate(Employee employee) {

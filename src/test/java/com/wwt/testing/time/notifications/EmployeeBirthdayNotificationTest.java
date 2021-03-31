@@ -46,7 +46,17 @@ class EmployeeBirthdayNotificationTest {
     }
 
     @Test
-    void leapYearBirthdayIsHandledOnNonLeapYear() {
+    void duringLeapYearLeapBirthdayIsOnlyRecognizedOnActualDay() {
+        Employee employee = new Employee("Saul Williams", LocalDate.of(1972, 2, 29));
+        clock.setInstant(midnightUtc(LocalDate.of(2020, 3, 1)));
+
+        Optional<Notification> notifications = birthdayNotification.generate(employee);
+
+        assertThat(notifications).isEmpty();
+    }
+
+    @Test
+    void leapYearBirthdayIsHandledMarchFirstOnNormalYear() {
         Employee employee = new Employee("Saul Williams", LocalDate.of(1972, 2, 29));
         clock.setInstant(midnightUtc(LocalDate.of(2021, 3, 1)));
 

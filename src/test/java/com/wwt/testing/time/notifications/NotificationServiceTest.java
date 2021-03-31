@@ -7,77 +7,30 @@ import org.threeten.extra.MutableClock;
 
 import java.time.*;
 import java.util.List;
+import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.not;
 
 class NotificationServiceTest {
-    private final MutableClock clock = MutableClock.epochUTC();
-    private final NotificationService notificationService = new NotificationService(clock);
-
-    @AfterEach
-    void after() {
-        clock.setInstant(Instant.EPOCH);
-    }
+    private final NotificationService notificationService = new NotificationService(
+            List.of(employee -> Optional.of(Notification.of("Howdy", "Hello " + employee.name())),
+                    employee -> Optional.empty(),
+                    employee -> Optional.of(Notification.of("Hi Again!", "Yo " + employee.name() + "!")))
+    );
 
     @Test
-    void shouldGenerateBirthdayNotificationOnBirthday() {
-        clock.setInstant(midnightUtc(LocalDate.of(2021, 3, 14)));
-
-        Employee employee = new Employee("Al Einstein",
-                LocalDate.of(1879, 3, 14)
-        );
+    void generatesNotificationsUsingRegisteredGenerators() {
+        Employee employee = new Employee("Bob Ross", LocalDate.of(1942, 10, 29));
 
         List<Notification> notifications = notificationService.generate(employee);
 
         assertThat(notifications)
-                .containsExactly(new Notification("Happy Birthday!", "Have a fabulous birthday Al Einstein!"));
-    }
+                .hasSize(2)
+                .containsExactly(
+                        Notification.of("Howdy", "Hello Bob Ross"),
+                        Notification.of("Hi Again!", "Yo Bob Ross!")
+                );
 
-    @Test
-    void shouldNotGenerateBirthdayNotificationWhenNotYourSpecialDay() {
-        clock.setInstant(midnightUtc(LocalDate.of(2021, 3, 15)));
-
-        Employee employee = new Employee("Tom Hermann",
-                LocalDate.of(1980, 2, 29)
-        );
-
-        List<Notification> notifications = notificationService.generate(employee);
-
-        assertThat(notifications).isEmpty();
-    }
-
-    @Test
-    void leapYearBirthdayIsHandledOnLeapYear() {
-        clock.setInstant(midnightUtc(LocalDate.of(2024, 2, 29)));
-
-        Employee employee = new Employee("Simone Biles",
-                LocalDate.of(1997, 3, 14)
-        );
-
-        List<Notification> notifications = notificationService.generate(employee);
-
-        assertThat(notifications)
-                .containsExactly(new Notification("Happy Birthday!", "Happy birthday Tom Hermann!"));
-    }
-
-    @Test
-    void leapYearBirthdayIsHandledOnNonLeapYear() {
-        clock.setInstant(midnightUtc(LocalDate.of(2021, 3, 1)));
-
-        Employee employee = new Employee("Tom Hermann",
-                LocalDate.of(1980, 2, 29)
-        );
-
-        List<Notification> notifications = notificationService.generate(employee);
-
-        assertThat(notifications)
-                .containsExactly(new Notification("Happy Birthday!", "Happy birthday Tom Hermann!"));
-    }
-
-    private static Instant midnightUtc(LocalDate localDate) {
-        return LocalDateTime.of(localDate, LocalTime.MIDNIGHT)
-                .atZone(ZoneId.of("UTC"))
-                .toInstant();
     }
 }
