@@ -1,7 +1,6 @@
 package com.wwt.testing.time.notifications;
 
 import com.wwt.testing.time.Employee;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.threeten.extra.MutableClock;
 
@@ -14,15 +13,9 @@ class EmployeeBirthdayNotificationTest {
     private final MutableClock clock = MutableClock.epochUTC();
     private final EmployeeBirthdayNotification birthdayNotification = new EmployeeBirthdayNotification(clock);
 
-    @AfterEach
-    void after() {
-        clock.setInstant(Instant.EPOCH);
-    }
-
     @Test
     void shouldGenerateBirthdayNotificationOnBirthday() {
         clock.setInstant(midnightUtc(LocalDate.of(2021, 3, 14)));
-
         Employee employee = new Employee("Al Einstein", LocalDate.of(1879, 3, 14));
 
         Optional<Notification> notification = birthdayNotification.generate(employee);
@@ -43,8 +36,8 @@ class EmployeeBirthdayNotificationTest {
 
     @Test
     void leapYearBirthdayIsHandledOnDayOfBirthdayDuringLeapYear() {
-        clock.setInstant(midnightUtc(LocalDate.of(2024, 2, 29)));
         Employee employee = new Employee("Ja Rule", LocalDate.of(1976, 2, 29));
+        clock.setInstant(midnightUtc(LocalDate.of(2024, 2, 29)));
 
         Optional<Notification> notification = birthdayNotification.generate(employee);
 
@@ -54,9 +47,8 @@ class EmployeeBirthdayNotificationTest {
 
     @Test
     void leapYearBirthdayIsHandledOnNonLeapYear() {
-        clock.setInstant(midnightUtc(LocalDate.of(2021, 3, 1)));
-
         Employee employee = new Employee("Saul Williams", LocalDate.of(1972, 2, 29));
+        clock.setInstant(midnightUtc(LocalDate.of(2021, 3, 1)));
 
         Optional<Notification> notifications = birthdayNotification.generate(employee);
 
