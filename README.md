@@ -101,17 +101,17 @@ For our first tests, we should verify:
 
 ### It's your birthday!
 ```java
-    @Test
-    @DisplayName("Should generate notification on birthday")
-    void shouldGenerateNotificationOnBirthday() {
-        Person person = new Person("Al Einstein", LocalDate.of(1879, 3, 14));
-        clock.set(LocalDate.of(2021, 3, 14));
+@Test
+@DisplayName("Should generate notification on birthday")
+void shouldGenerateNotificationOnBirthday() {
+    Person person = new Person("Al Einstein", LocalDate.of(1879, 3, 14));
+    clock.set(LocalDate.of(2021, 3, 14));
 
-        Optional<Notification> notification = testObject.generate(person);
+    Optional<Notification> notification = testObject.generate(person);
 
-        assertThat(notification)
-                .contains(new Notification("Happy Birthday!", "Have a fabulous birthday Al Einstein!"));
-    }
+    assertThat(notification)
+            .contains(new Notification("Happy Birthday!", "Have a fabulous birthday Al Einstein!"));
+}
 ```
 
 Most of these tests will have a similar setup: create a person with a specific birthday, set the clock for the scenario,
@@ -121,7 +121,7 @@ In this example we want to prove that on your birthday, you get a notification. 
 the clock to 3/14/2021, and asserted a notification was generated with the expected content.
 
 If we wanted to be more specific, the clock also has a `setInstant(...)` method that allows you to set the clock to an
-exact point in time. We only care about the day, so we'll just use the  
+exact point in time. We only care about the day, so we'll just [set](https://www.threeten.org/threeten-extra/apidocs/org.threeten.extra/org/threeten/extra/MutableClock.html#set(java.time.temporal.TemporalAdjuster)) the date.  
 
 Once we pass that test, we'll want to verify that you don't get notified when it isn't your birthday:
 
