@@ -3,7 +3,7 @@ package com.wwt.testing.time.notifications;
 import com.wwt.testing.time.Person;
 
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class NotificationService {
     private final List<NotificationGenerator<Person>> generators;
@@ -12,9 +12,8 @@ public class NotificationService {
         this.generators = generators;
     }
 
-    public List<Notification> generate(Person person) {
+    public Stream<Notification> generate(Person person) {
         return generators.stream()
-                .flatMap(generator -> generator.generate(person).stream())
-                .collect(Collectors.toList());
+                .flatMap(generator -> generator.generate(person).stream());
     }
 }
