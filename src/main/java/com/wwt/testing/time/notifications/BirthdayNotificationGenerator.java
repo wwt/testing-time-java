@@ -1,37 +1,37 @@
 package com.wwt.testing.time.notifications;
 
-import com.wwt.testing.time.Employee;
+import com.wwt.testing.time.Person;
 
 import java.time.Clock;
 import java.time.LocalDate;
 import java.time.MonthDay;
 import java.util.Optional;
 
-public class EmployeeBirthdayNotification implements NotificationGenerator<Employee> {
+public class BirthdayNotificationGenerator implements NotificationGenerator<Person> {
     private final Clock clock;
 
-    public EmployeeBirthdayNotification(Clock clock) {
+    public BirthdayNotificationGenerator(Clock clock) {
         this.clock = clock;
     }
 
     @Override
-    public Optional<Notification> generate(Employee employee) {
-        return Optional.of(employee)
+    public Optional<Notification> generate(Person person) {
+        return Optional.of(person)
                 .filter(this::isBirthday)
                 .map(this::createNotification);
     }
 
-    private Notification createNotification(Employee employee) {
+    private Notification createNotification(Person person) {
         return Notification.of(
                 "Happy Birthday!",
-                String.format("Have a fabulous birthday %s!", employee.name())
+                String.format("Have a fabulous birthday %s!", person.name())
         );
     }
 
-    private boolean isBirthday(Employee employee) {
+    private boolean isBirthday(Person person) {
         LocalDate today = LocalDate.now(clock);
         MonthDay monthDayToday = MonthDay.from(today);
-        MonthDay birthday = MonthDay.from(employee.birthday());
+        MonthDay birthday = MonthDay.from(person.birthday());
         return isBirthdayToday(birthday, monthDayToday) || isLeapBirthdayObserved(birthday, today);
     }
 

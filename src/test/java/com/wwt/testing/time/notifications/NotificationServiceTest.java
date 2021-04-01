@@ -1,6 +1,6 @@
 package com.wwt.testing.time.notifications;
 
-import com.wwt.testing.time.Employee;
+import com.wwt.testing.time.Person;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
@@ -11,16 +11,16 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class NotificationServiceTest {
     private final NotificationService notificationService = new NotificationService(List.of(
-        employee -> Optional.of(Notification.of("Howdy", "Hello " + employee.name())),
-        employee -> Optional.empty(),
-        employee -> Optional.of(Notification.of("Hi Again!", "Yo, " + employee.name() + "!")))
+            person -> Optional.of(Notification.of("Howdy", "Hello " + person.name())),
+            person -> Optional.empty(),
+            person -> Optional.of(Notification.of("Hi Again!", "Yo, " + person.name() + "!")))
     );
 
     @Test
     void generatesNotificationsUsingRegisteredGenerators() {
-        Employee employee = new Employee("Bob Ross", LocalDate.of(1942, 10, 29));
+        Person person = new Person("Bob Ross", LocalDate.of(1942, 10, 29));
 
-        List<Notification> notifications = notificationService.generate(employee);
+        List<Notification> notifications = notificationService.generate(person);
 
         assertThat(notifications)
                 .hasSize(2)
