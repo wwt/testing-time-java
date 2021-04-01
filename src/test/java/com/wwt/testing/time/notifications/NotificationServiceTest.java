@@ -1,22 +1,19 @@
 package com.wwt.testing.time.notifications;
 
 import com.wwt.testing.time.Employee;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
-import org.threeten.extra.MutableClock;
 
-import java.time.*;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.not;
 
 class NotificationServiceTest {
-    private final NotificationService notificationService = new NotificationService(
-            List.of(employee -> Optional.of(Notification.of("Howdy", "Hello " + employee.name())),
-                    employee -> Optional.empty(),
-                    employee -> Optional.of(Notification.of("Hi Again!", "Yo " + employee.name() + "!")))
+    private final NotificationService notificationService = new NotificationService(List.of(
+        employee -> Optional.of(Notification.of("Howdy", "Hello " + employee.name())),
+        employee -> Optional.empty(),
+        employee -> Optional.of(Notification.of("Hi Again!", "Yo, " + employee.name() + "!")))
     );
 
     @Test
@@ -29,7 +26,7 @@ class NotificationServiceTest {
                 .hasSize(2)
                 .containsExactly(
                         Notification.of("Howdy", "Hello Bob Ross"),
-                        Notification.of("Hi Again!", "Yo Bob Ross!")
+                        Notification.of("Hi Again!", "Yo, Bob Ross!")
                 );
 
     }
