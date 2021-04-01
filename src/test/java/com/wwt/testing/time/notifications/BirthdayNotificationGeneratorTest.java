@@ -43,18 +43,6 @@ class BirthdayNotificationGeneratorTest {
     class LeapYearTests {
 
         @Test
-        @DisplayName("On normal year, notify Feb 29th birthday on March 1st")
-        void leapBirthdayNotifiedOnMarchFirstOnNormalYear() {
-            Person person = new Person("Saul Williams", LocalDate.of(1972, 2, 29));
-            clock.set(LocalDate.of(2021, 3, 1));
-
-            Optional<Notification> notifications = testObject.generate(person);
-
-            assertThat(notifications)
-                    .contains(new Notification("Happy Birthday!", "Have a fabulous birthday Saul Williams!"));
-        }
-
-        @Test
         @DisplayName("On leap year, notify Feb 29th birthday on exact day")
         void leapBirthdayIsHandledOnExactDayDuringLeapYear() {
             Person person = new Person("Ja Rule", LocalDate.of(1976, 2, 29));
@@ -64,6 +52,18 @@ class BirthdayNotificationGeneratorTest {
 
             assertThat(notification)
                     .contains(new Notification("Happy Birthday!", "Have a fabulous birthday Ja Rule!"));
+        }
+
+        @Test
+        @DisplayName("On normal year, notify Feb 29th birthday on March 1st")
+        void leapBirthdayNotifiedOnMarchFirstOnNormalYear() {
+            Person person = new Person("Saul Williams", LocalDate.of(1972, 2, 29));
+            clock.set(LocalDate.of(2021, 3, 1));
+
+            Optional<Notification> notifications = testObject.generate(person);
+
+            assertThat(notifications)
+                    .contains(new Notification("Happy Birthday!", "Have a fabulous birthday Saul Williams!"));
         }
 
         @Test

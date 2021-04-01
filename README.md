@@ -2,8 +2,7 @@
 
 > Time isn’t the main thing. It’s the only thing - Miles Davis
 
-Birthdays are the best! Today we're going to write some tested code that creates birthday notifications for people. We 
-want to make sure people born on Feb 29th aren't left out, so let's explore how we test time based classes with the
+Birthdays are the best! Today we're going to write some tested code that creates birthday notifications for people. Let's explore how we test time based classes with the
 `java.time` API.
 
 ### Set Up
@@ -86,8 +85,8 @@ decision we're going to need to make is which `Clock` to use? The `java.time.Clo
 that will always produce the same instant once configured, but since we went with constructor injection, we don't want 
 to have to recreate the test instance in each test case. 
 
-ThreeTen-Extra, an optional part of the JSR-310 project, provides a mutable clock implementation that lets you set the current time.
-That seems like a good fit for our needs, so we can add a test dependency to our `build.gradle` on `"org.threeten:threeten-extra:1.6.0"` and get testing!
+[ThreeTen-Extra](https://www.threeten.org/threeten-extra/), an optional part of the JSR-310 project, provides a [mutable clock](https://www.threeten.org/threeten-extra/apidocs/org.threeten.extra/org/threeten/extra/MutableClock.html)
+implementation that lets you set the current time. That seems like a good fit for our needs, so we can add a test dependency in our `build.gradle` on `"org.threeten:threeten-extra:1.6.0"` and get testing!
 
 ```java
 class BirthdayNotificationTest {
@@ -116,13 +115,13 @@ For our first tests, we should verify:
 ```
 
 Most of these tests will have a similar setup: create a person with a specific birthday, set the clock for the scenario,
-generate an optional notification and verify the results. 
+generate an optional notification, and verify the results. 
 
 In this example we want to prove that on your birthday, you get a notification. We set Albert's birthday to 3/14/1879, 
 the clock to 3/14/2021, and asserted a notification was generated with the expected content.
 
 If we wanted to be more specific, the clock also has a `setInstant(...)` method that allows you to set the clock to an
-exact point in time.
+exact point in time. We only care about the day, so we'll just use the  
 
 Once we pass that test, we'll want to verify that you don't get notified when it isn't your birthday:
 
@@ -139,13 +138,77 @@ void shouldNotGenerateNotificationWhenNotBirthday() {
 }
 ```
 
+The implementation I came up with to pass those two basic tests looked something like this: 
+
+```java
+package com.wwt.testing.time.notifications;
+
+import com.wwt.testing.time.Person;
+
+import java.time.Clock;
+import java.time.MonthDay;
+import java.util.Optional;
+
+public class BirthdayNotificationGenerator implements NotificationGenerator<Person> {
+    private final Clock clock;
+
+    public BirthdayNotificationGenerator(Clock clock) {
+        this.clock = clock;
+    }
+
+    @Override
+    public Optional<Notification> generate(Person person) {
+        return Optional.of(person)
+                .filter(this::isBirthday)
+                .map(this::createNotification);
+    }
+
+    private Notification createNotification(Person person) {
+        var message = String.format("Have a fabulous birthday %s!", person.name());
+        return Notification.of("Happy Birthday!", message);
+    }
+
+    private boolean isBirthday(Person person) {
+        var now = MonthDay.now(clock);
+        return MonthDay.from(person.birthday()).equals(now);
+    }
+}
+```
+
+Let's take a quick look at the `isBirthday(Person person)` method. In JSR-310 there is a MonthDay class that represents 
+a month day combo. `MonthDay` has a `now(...)` factory method that takes a clock to provide the current month and day. 
+We use injected clock, so the time set by our `MutableClock` in our test configuration gets used.
+
 ### Testing edge cases
 
+Looks great, ship it; right? We have one more consideration, people born Feb 29th on a leap year will only be notified 
+once every four years with the current implementation. We don't want to forget about them!
 
+```java
+@Test
+@DisplayName("On normal year, notify Feb 29th birthday on March 1st")
+void leapBirthdayNotifiedOnMarchFirstOnNormalYear() {
+    Person person = new Person("Ja Rule", LocalDate.of(1976, 2, 29));
+    clock.set(LocalDate.of(2021, 3, 1));
+
+    Optional<Notification> notifications = testObject.generate(person);
+
+    assertThat(notifications)
+            .contains(new Notification("Happy Birthday!", "Have a fabulous birthday Ja Rule!"));
+}
+```
+
+The procedure is the same, but in this case we'll create a person with a birthday on February 29th, and verify that on a
+non-leap year they get notified on March 1st instead.
+
+We'll wrap up testing with the following two cases, and we'll be ready to ship:
+- On leap year, you should be notified of a Feb 29th birthday on the exact day
+- On leap year, you should be not be notified on March 1st
+
+If you want to see the completed solution, check out the [repo on GitHub](https://github.com/wwt/testing-time-java)!
 
 ### Additional Resources
-- [JUnit5 User Guide](https://junit.org/junit5/docs/current/user-guide/#writing-tests-built-in-extensions-TempDirectory)
-- [JUnit5 @TempDir](https://junit.org/junit5/docs/current/api/org.junit.jupiter.api/org/junit/jupiter/api/io/TempDir.html)
-- [JUnit4 @TemporaryFolder Rule](https://junit.org/junit4/javadoc/4.13/org/junit/rules/TemporaryFolder.html)
-- [GitHub Source for this Article](https://github.com/wwt/testing-file-io-junit)
-- [Jimfs - In Memory Filesystem](https://github.com/google/jimfs)
+- [Project GitHub](https://github.com/wwt/testing-time-java)
+- [ThreeTen Homepage](https://www.threeten.org/)
+- [ThreeTen Extra](https://www.threeten.org/threeten-extra/)
+- [Mutable Clock](https://www.threeten.org/threeten-extra/apidocs/org.threeten.extra/org/threeten/extra/MutableClock.html)
