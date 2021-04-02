@@ -96,7 +96,7 @@ public class BirthdayNotificationGenerator implements NotificationGenerator<Pers
 As always, lets create a test class for our `BirthdayNotificationGenerator` and instantiate the class under test. The first
 decision we're going to need to make is which `Clock` to use? The `java.time.Clock` comes with a [fixed implementation](https://docs.oracle.com/javase/8/docs/api/java/time/Clock.html#fixed-java.time.Instant-java.time.ZoneId-), 
 that will always produce the same instant once configured, but since we went with constructor injection, we don't want 
-to have to recreate the test instance in each test case. 
+to be required to recreate the test instance in each test case.
 
 [ThreeTen-Extra](https://www.threeten.org/threeten-extra/), an optional part of the JSR-310 project, provides a [mutable clock](https://www.threeten.org/threeten-extra/apidocs/org.threeten.extra/org/threeten/extra/MutableClock.html)
 implementation that lets you set the current time. That seems like a good fit for our needs, so we can add a test dependency in our `build.gradle` on `"org.threeten:threeten-extra:1.6.0"` and get testing!
