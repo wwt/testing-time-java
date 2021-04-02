@@ -55,7 +55,7 @@ class BirthdayNotificationGeneratorTest {
         }
 
         @Test
-        @DisplayName("On normal year, notify Feb 29th birthday on March 1st")
+        @DisplayName("On non-leap year, notify Feb 29th birthday on March 1st")
         void leapBirthdayNotifiedOnMarchFirstOnNormalYear() {
             Person person = new Person("Saul Williams", LocalDate.of(1972, 2, 29));
             clock.set(LocalDate.of(2021, 3, 1));

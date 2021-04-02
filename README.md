@@ -2,15 +2,24 @@
 
 > Time isn’t the main thing. It’s the only thing - Miles Davis
 
-Birthdays are the best! Today we're going to write some tested code that creates birthday notifications for people. Let's explore how we test time based classes with the
-`java.time` API.
+Birthdays are the best! Today we're going to write some tested code that creates birthday notifications for people.
+Let's explore how we test time based classes with the `java.time` API.
+
+### Dates and Times in Java
+
+The original `java.util.Date` and `java.util.Calendar` classes still exist in modern Java, but should not be used 
+unless you have to interoperate with legacy Java libraries. As of JDK 1.8, the ThreeTen project has been integrated into 
+the JDK as the [java.time](https://docs.oracle.com/en/java/javase/16/docs/api/java.base/java/time/package-summary.html) package, and is the preferred way to work with dates and time. The API is much cleaner and its classes are immutable and 
+thread-safe. 
+
 
 ### Set Up
-
 #### The Person
-Let's start with a simple person definition, for our purposes, we just need a name and birthday. Since Java 8, 
-the standard date/time API is JSR-310, so we'll go ahead and model birthday as a `LocalDate`. Local date represents
-a year, month, and day without information about the time-zone or offset, which is perfect for a birthday.
+Let's start with a simple person definition, for our purposes, we just need a name and birthday. 
+
+We can model birthday as a `LocalDate`, which represents a year, month, and day without time-zone or offset information.
+`LocalDate` is perfect for a birthday, since it describes a date. To eliminate boilerplate, let's take advantage of Java
+16's new record classes:
 
 ```java
 public record Person(
@@ -23,6 +32,13 @@ public record Person(
 
 A notification consists of a title and a message. Think of it as something you see when you log into a website, or a push 
 notification destined for your mobile device.
+
+```java
+public record Notification(
+    String title,
+    String message
+) {}
+```
 
 Given the following interface definition, we want to create a class that is a `NotificationGenerator<Person>`, 
 which will produce a notification when it is called on the day of the person's birthday. On any other day the 
@@ -60,10 +76,7 @@ and takes a `java.time.Clock` as a constructor parameter, so we can set the time
 package com.wwt.testing.time.notifications;
 
 import com.wwt.testing.time.Person;
-
 import java.time.Clock;
-import java.time.LocalDate;
-import java.time.MonthDay;
 import java.util.Optional;
 
 public class BirthdayNotificationGenerator implements NotificationGenerator<Person> {
@@ -186,7 +199,7 @@ once every four years with the current implementation. We don't want to forget a
 
 ```java
 @Test
-@DisplayName("On normal year, notify Feb 29th birthday on March 1st")
+@DisplayName("On non-leap year, notify Feb 29th birthday on March 1st")
 void leapBirthdayNotifiedOnMarchFirstOnNormalYear() {
     Person person = new Person("Ja Rule", LocalDate.of(1976, 2, 29));
     clock.set(LocalDate.of(2021, 3, 1));
@@ -202,8 +215,8 @@ The procedure is the same, but in this case we'll create a person with a birthda
 non-leap year they get notified on March 1st instead.
 
 We'll wrap up testing with the following two cases, and we'll be ready to ship:
-- On leap year, you should be notified of a Feb 29th birthday on the exact day
-- On leap year, you should be not be notified on March 1st
+- On leap year, notify Feb 29th birthday on exact day
+- So that we don't notify twice on leap year, on leap year, do not notify Feb 29th birthday on March 1
 
 If you want to see the completed solution, check out the [repo on GitHub](https://github.com/wwt/testing-time-java)!
 
