@@ -9,7 +9,6 @@ import java.time.Clock;
 import java.time.LocalDate;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -29,7 +28,7 @@ public class App implements Runnable {
     public void run() {
         String formattedDay = ZonedDateTime.now().format(DateTimeFormatter.ISO_LOCAL_DATE);
         logger.info("Generating notifications for today, {}", formattedDay);
-        logger.info(String.join("", Collections.nCopies(46, "-")));
+        logger.info("-".repeat(47));
 
         people
             .flatMap(notificationService::generate)
