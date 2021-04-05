@@ -64,13 +64,13 @@ enables us to verify the notification is only sent when appropriate.
 #### Enter the java.time.Clock
 
 The `java.time.Clock` is responsible for supplying the current instant using a time-zone. Many of the 
-date-time constructs in `java.time.*` have a factory method named `now()` that takes a clock as a parameter, which
-will create the date/time at the instant provided by the clock.
+date-time constructs in `java.time.*` have a factory method named `now()` that takes a clock as a parameter. This will
+create the date/time at the instant provided by the clock in the clock's time-zone.
 
 ### The Class Under Test
 
 It feels like we know enough to start building the class under test. Let's make a class that implements `NotificationGenerator<Person>`
-and takes a `java.time.Clock` as a constructor parameter, so we can set the time.
+and takes a `java.time.Clock` as a constructor parameter, so we can provide the time.
 
 ```java
 package com.wwt.testing.time.notifications;
@@ -110,8 +110,9 @@ public static LocalDate now(Clock clock) {
 ```
 
 We could use Mockito to mock `java.time.Clock` and specify what zone and instant the clock provides. In order to
-do that we'll need to mock out the instant, zone, and making an instant when we only care about the date is a bit of a pain.
+do that we'll need to mock out the instant and time zone. 
 
+Our test set up would require something like this with mocks:
 ```java
 package com.wwt.testing.time.notifications;
 
@@ -158,19 +159,21 @@ public class BirthdayNotificationGeneratorMockTest {
 }
 ```
 
+Seems like there is lots of ceremony for a partially working clock. Let's keep exploring our options.
+
 ### ThreeTen-Extra to the Rescue!
-[ThreeTen-Extra](https://www.threeten.org/threeten-extra/), an optional part of the ThreeTen project, provides a [mutable clock](https://www.threeten.org/threeten-extra/apidocs/org.threeten.extra/org/threeten/extra/MutableClock.html)
-that does not advance time on its own. Instead, it provides methods that let you set the clock to a specific instant, or 
-advance time using its `add(...)` methods. 
+[ThreeTen-Extra](https://www.threeten.org/threeten-extra/), an optional part of the ThreeTen project, provides a [mutable clock](https://www.threeten.org/threeten-extra/apidocs/org.threeten.extra/org/threeten/extra/MutableClock.html).
+This clock does not advance time on its own; instead, it provides methods that let you set the clock to a specific 
+instant, or advance time using its `add(...)` methods. 
 
 To use the MutableClock there are a variety of static [factory methods available](https://www.threeten.org/threeten-extra/apidocs/org.threeten.extra/org/threeten/extra/MutableClock.html#epochUTC()) 
-which create the clock at an initial point in time.
+which configure the clock at an exact instant in a specific time-zone.
 
 ### It's your birthday!
 
-For our first tests, we should verify:
-1. A notification is generated on a person's birthday
-1. A notification is not generated when it isn't a person's birthday
+For our first tests, we should cover the basic cases:
+1. A notification should be generated on a person's birthday.
+1. A notification should not be generated when it isn't a person's birthday.
 
 ```java
 package com.wwt.testing.time.notifications;
@@ -211,7 +214,8 @@ In this example we want to prove that on your birthday, you get a notification. 
 the clock to 3/14/2021, and assert a notification is generated with the expected content.
 
 If we wanted to be more specific, the clock also has a `setInstant(...)` method that allows you to set the clock to an
-exact point in time. We only care about the day, so we'll just [set](https://www.threeten.org/threeten-extra/apidocs/org.threeten.extra/org/threeten/extra/MutableClock.html#set(java.time.temporal.TemporalAdjuster)) the date.  
+exact point in time. We only care about the day, so we'll just [set](https://www.threeten.org/threeten-extra/apidocs/org.threeten.extra/org/threeten/extra/MutableClock.html#set(java.time.temporal.TemporalAdjuster)) 
+the date.  
 
 Once we pass that test, we'll want to verify that you don't get notified when it isn't your birthday:
 
@@ -266,13 +270,13 @@ public class BirthdayNotificationGenerator implements NotificationGenerator<Pers
 ```
 
 Let's dive into the `isBirthday(Person person)` method. In `java.time` there is a [MonthDay](https://docs.oracle.com/javase/8/docs/api/java/time/MonthDay.html) 
-class that represents a month day combo. `MonthDay` has a `now(...)` factory method that takes a clock to provide the 
+class that represents a month day combination. `MonthDay` has a `now(...)` factory method that takes a clock to provide the 
 current month and day. Using the injected clock, we determine the current `MonthDay`, and compare that to the month and
-day of the person's birthday.
+day of the person's birthday. When this method returns true, a notification is generated with an uplifting message.
 
 ### Testing edge cases
 
-Looks great, ship it; right? We have one more consideration, people born Feb 29th on a leap year will only be notified 
+Looks great, ship it; right? We have one more consideration: people born Feb 29th on a leap year will only be notified 
 once every four years with the current implementation. We don't want to forget about them!
 
 ```java
@@ -292,16 +296,11 @@ void leapBirthdayNotifiedOnMarchFirstOnNormalYear() {
 The procedure is the same, but in this case we'll create a person with a birthday on February 29th, and verify that on a
 non-leap year they will be notified on March 1st instead.
 
-We'll wrap up testing with the following two cases, and we'll be ready to ship:
+We'll wrap up testing with the following two cases, and _then_ we'll be ready to ship:
 - On leap year, notify Feb 29th birthday on exact day
 - So that we don't notify twice on leap year, on leap year, do not notify Feb 29th birthday on March 1
 
 If you want to see the completed solution, check out the [repo on GitHub](https://github.com/wwt/testing-time-java)!
-
-### Conclusion
-
-Injecting a `java.time.Clock` makes writing deterministic time based tests a breeze. ThreeTen-extra's `MutableClock` 
-is a good alternative to mocking frameworks, and lets you set up readable, maintainable tests.
 
 ### Additional Resources
 - [Project GitHub](https://github.com/wwt/testing-time-java)
