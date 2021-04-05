@@ -162,12 +162,10 @@ public class BirthdayNotificationGeneratorMockTest {
 Seems like there is lots of ceremony for a partially working clock. Let's keep exploring our options.
 
 ### ThreeTen-Extra to the Rescue!
-[ThreeTen-Extra](https://www.threeten.org/threeten-extra/), an optional part of the ThreeTen project, provides a [mutable clock](https://www.threeten.org/threeten-extra/apidocs/org.threeten.extra/org/threeten/extra/MutableClock.html).
-This clock does not advance time on its own; instead, it provides methods that let you set the clock to a specific 
-instant, or advance time using its `add(...)` methods. 
-
-To use the `MutableClock` there are a variety of static [factory methods available](https://www.threeten.org/threeten-extra/apidocs/org.threeten.extra/org/threeten/extra/MutableClock.html#epochUTC()) 
-which initialize the clock to an exact instant in a specific time-zone.
+[ThreeTen-Extra](https://www.threeten.org/threeten-extra/), an optional part of the ThreeTen project, provides a [mutable clock](https://www.threeten.org/threeten-extra/apidocs/org.threeten.extra/org/threeten/extra/MutableClock.html),
+which does not advance time on its own. `MutableClock` can be initialized through static [factory methods](https://www.threeten.org/threeten-extra/apidocs/org.threeten.extra/org/threeten/extra/MutableClock.html#epochUTC())
+that start the clock off at a specific instant in a time zone. The configured instance is mutable, so you can change the
+date and time using its `set` methods or time can be advanced using its `add` methods.
 
 ### It's your birthday!
 
@@ -207,7 +205,7 @@ class BirthdayNotificationGeneratorTest {
 }
 ```
 
-Most of these tests will have a similar setup: create a person with a specific birthday, set the clock for the scenario,
+Most of these tests will have a similar setup: create a person with a specific birthday, set the date for the scenario,
 generate an optional notification, and verify the results. 
 
 In this example we want to prove that on your birthday, you get a notification. We set Albert's birthday to 3/14/1879, 
