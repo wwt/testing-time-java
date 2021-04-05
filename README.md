@@ -167,7 +167,7 @@ This clock does not advance time on its own; instead, it provides methods that l
 instant, or advance time using its `add(...)` methods. 
 
 To use the `MutableClock` there are a variety of static [factory methods available](https://www.threeten.org/threeten-extra/apidocs/org.threeten.extra/org/threeten/extra/MutableClock.html#epochUTC()) 
-which configure the clock at an exact instant in a specific time-zone.
+which initialize the clock to an exact instant in a specific time-zone.
 
 ### It's your birthday!
 
