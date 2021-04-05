@@ -188,7 +188,7 @@ public class BirthdayNotificationGenerator implements NotificationGenerator<Pers
 }
 ```
 
-Let's take a quick look at the `isBirthday(Person person)` method. In JSR-310 there is a [MonthDay](https://docs.oracle.com/javase/8/docs/api/java/time/MonthDay.html) class that represents 
+Let's take a quick look at the `isBirthday(Person person)` method. In `java.time` there is a [MonthDay](https://docs.oracle.com/javase/8/docs/api/java/time/MonthDay.html) class that represents 
 a month day combo. `MonthDay` has a `now(...)` factory method that takes a clock to provide the current month and day. 
 We use injected clock, so the time set by our `MutableClock` in our test configuration gets used.
 
