@@ -1,0 +1,510 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="38f21c51-9a8c-4c36-a811-6e950382af1b" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradlew" beforeDir="false" afterPath="$PROJECT_DIR$/gradlew" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wwt/testing/time/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wwt/testing/time/Person.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wwt/testing/time/notifications/Notification.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wwt/testing/time/notifications/Notification.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="testing-time-java" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="testing-time-java" type="f1a62948:ProjectNode" />
+                <item name="Run Configurations" type="7b0102dc:RunConfigurationsNode" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JUnit5 Test Class" />
+        <option value="module-info" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="ProjectId" id="1q7npKpQR5Dw3gQ2AZkeT48EdDP" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="autoscrollFromSource" value="true" />
+    <option name="autoscrollToSource" value="true" />
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="TF_FMT" value="false" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.19320215" />
+    <property name="settings.editor.selected.configurable" value="preferences.general" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/java" />
+      <recent name="$PROJECT_DIR$/src/main" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.wwt.testing.time.notifications" />
+      <recent name="com.wwt.testing.time" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Gradle.Tests in 'testing-time-java.test'">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BirthdayNotificationGeneratorMockTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="--tests &quot;com.wwt.testing.time.notifications.BirthdayNotificationGeneratorMockTest&quot;" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="BirthdayNotificationGeneratorTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="--tests &quot;com.wwt.testing.time.notifications.BirthdayNotificationGeneratorTest&quot;" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="BirthdayNotificationGeneratorTest.shouldGenerateNotificationOnBirthday" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="--tests &quot;com.wwt.testing.time.notifications.BirthdayNotificationGeneratorTest.shouldGenerateNotificationOnBirthday&quot;" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="NotificationServiceTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="--tests &quot;com.wwt.testing.time.notifications.NotificationServiceTest&quot;" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="Tests in 'testing-time-java.test'" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="--tests *" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Gradle.Tests in 'testing-time-java.test'" />
+        <item itemvalue="Gradle.BirthdayNotificationGeneratorTest.shouldGenerateNotificationOnBirthday" />
+        <item itemvalue="Gradle.BirthdayNotificationGeneratorMockTest" />
+        <item itemvalue="Gradle.NotificationServiceTest" />
+        <item itemvalue="Gradle.BirthdayNotificationGeneratorTest" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="38f21c51-9a8c-4c36-a811-6e950382af1b" name="Default Changelist" comment="" />
+      <created>1616439677791</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1616439677791</updated>
+      <workItem from="1616439680029" duration="6260000" />
+      <workItem from="1617137297979" duration="741000" />
+      <workItem from="1617199642994" duration="21414000" />
+      <workItem from="1617286095709" duration="42902000" />
+      <workItem from="1617634842038" duration="16623000" />
+      <workItem from="1617738930582" duration="5472000" />
+      <workItem from="1618253229069" duration="837000" />
+      <workItem from="1618413970161" duration="733000" />
+      <workItem from="1624461084346" duration="1342000" />
+      <workItem from="1624545342310" duration="4521000" />
+    </task>
+    <task id="LOCAL-00001" summary="Initial commit.">
+      <created>1616440897021</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1616440897021</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Initial commit.">
+      <created>1616440924069</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1616440924069</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Send some birthday love to your employees.">
+      <created>1617217902988</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1617217902988</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Since we really just care about the MonthDay, pass that into birthday methods for readability.">
+      <created>1617218244156</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1617218244156</updated>
+    </task>
+    <task id="LOCAL-00005" summary="No need to reset clock between runs, a new instance will be created per test.">
+      <created>1617218553358</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1617218553358</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Fixed bug in birthday notification, yay tests!">
+      <created>1617221552729</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1617221552729</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Organize imports, minor formatting cleanup.">
+      <created>1617287024277</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1617287024277</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Rename employee to person.">
+      <created>1617302085356</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1617302085356</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Cleaned up readme, code.">
+      <created>1617308351110</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1617308351110</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Formatted code in readme, completed sentence.">
+      <created>1617309652896</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1617309652896</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Add MonthDay link">
+      <created>1617309851744</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1617309851744</updated>
+    </task>
+    <task id="LOCAL-00012" summary="There's an app for that.">
+      <created>1617312370111</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1617312370111</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Return stream from notification service to make it a little easier to use in our App example.">
+      <created>1617313438969</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1617313438969</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Use string repeat :facepalm:">
+      <created>1617374979132</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1617374979132</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Update to readme.md, included slf4j api explicitly.">
+      <created>1617394879090</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1617394879090</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Update to readme.md, included slf4j api explicitly.">
+      <created>1617395441926</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1617395441926</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Use `java.time` rather than talking about the JSR">
+      <created>1617636623157</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1617636623157</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Playing around with jlink to build minimal jdk for app.">
+      <created>1617636655627</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1617636655627</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Added mock example.">
+      <created>1617655447239</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1617655447239</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Added mock example.">
+      <created>1617655574526</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1617655574526</updated>
+    </task>
+    <task id="LOCAL-00021" summary="Use log4j2 + sl4fj because it makes the jlink branch a bit easier to configure.">
+      <created>1617655783909</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1617655783909</updated>
+    </task>
+    <task id="LOCAL-00022" summary="Added additional information around the clock.">
+      <created>1617659464286</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1617659464286</updated>
+    </task>
+    <task id="LOCAL-00023" summary="Escape clock.">
+      <created>1617659649000</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1617659649000</updated>
+    </task>
+    <task id="LOCAL-00024" summary="Awkward wording.">
+      <created>1617659713938</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1617659713938</updated>
+    </task>
+    <task id="LOCAL-00025" summary="Awkward wording.">
+      <created>1617660360948</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1617660360948</updated>
+    </task>
+    <task id="LOCAL-00026" summary="Gradle 7 release">
+      <created>1618414099904</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1618414099904</updated>
+    </task>
+    <task id="LOCAL-00027" summary="Gradle bump">
+      <created>1624461535894</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1624461535894</updated>
+    </task>
+    <task id="LOCAL-00028" summary="Configure Polaris, .gitignore.">
+      <created>1624461639922</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1624461639922</updated>
+    </task>
+    <task id="LOCAL-00029" summary="Created Java 11 version of the application, so folks without Java 16 can test time too!">
+      <created>1624546003562</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1624546003562</updated>
+    </task>
+    <task id="LOCAL-00030" summary="Gradle cleanup, fixed group.">
+      <created>1624633647493</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1624633647493</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Send some birthday love to your employees." />
+    <MESSAGE value="Since we really just care about the MonthDay, pass that into birthday methods for readability." />
+    <MESSAGE value="No need to reset clock between runs, a new instance will be created per test." />
+    <MESSAGE value="Fixed bug in birthday notification, yay tests!" />
+    <MESSAGE value="Organize imports, minor formatting cleanup." />
+    <MESSAGE value="Rename employee to person." />
+    <MESSAGE value="Cleaned up readme, code." />
+    <MESSAGE value="Formatted code in readme, completed sentence." />
+    <MESSAGE value="Add MonthDay link" />
+    <MESSAGE value="There's an app for that." />
+    <MESSAGE value="Return stream from notification service to make it a little easier to use in our App example." />
+    <MESSAGE value="Use string repeat :facepalm:" />
+    <MESSAGE value="Update to readme.md, included slf4j api explicitly." />
+    <MESSAGE value="Use `java.time` rather than talking about the JSR" />
+    <MESSAGE value="Playing around with jlink to build minimal jdk for app." />
+    <MESSAGE value="Added mock example." />
+    <MESSAGE value="Use log4j2 + sl4fj because it makes the jlink branch a bit easier to configure." />
+    <MESSAGE value="Added additional information around the clock." />
+    <MESSAGE value="Escape clock." />
+    <MESSAGE value="Awkward wording." />
+    <MESSAGE value="Gradle 7 release" />
+    <MESSAGE value="Gradle bump" />
+    <MESSAGE value="Configure Polaris, .gitignore." />
+    <MESSAGE value="Created Java 11 version of the application, so folks without Java 16 can test time too!" />
+    <MESSAGE value="Gradle cleanup, fixed group." />
+    <option name="LAST_COMMIT_MESSAGE" value="Gradle cleanup, fixed group." />
+    <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/build.gradle</url>
+          <line>12</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
