@@ -3,7 +3,7 @@ plugins {
     id 'application'
 }
 
-group 'org.example'
+group 'org.wwt'
 version '1.0.0'
 
 repositories {
@@ -11,9 +11,7 @@ repositories {
 }
 
 java {
-    toolchain {
-        languageVersion = JavaLanguageVersion.of(16)
-    }
+    toolchain.languageVersion = JavaLanguageVersion.of(16)
 }
 
 dependencies {
