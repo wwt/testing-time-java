@@ -15,21 +15,18 @@ java {
 }
 
 dependencies {
-    implementation(platform("org.apache.logging.log4j:log4j-bom:2.14.1"))
-    implementation("org.slf4j:slf4j-api:1.7.30")
-    implementation("org.apache.logging.log4j:log4j-api")
-    implementation("org.apache.logging.log4j:log4j-core")
-    implementation("org.apache.logging.log4j:log4j-slf4j-impl")
+    implementation("ch.qos.logback:logback-core:1.2.8")
+    implementation("org.slf4j:slf4j-api:1.7.32")
 
-    testImplementation("org.assertj:assertj-core:3.19.0")
-    testImplementation("org.threeten:threeten-extra:1.6.0")
+    testImplementation("org.assertj:assertj-core:3.21.0")
+    testImplementation("org.threeten:threeten-extra:1.7.0")
 
-    testImplementation(platform("org.junit:junit-bom:5.7.1"))
+    testImplementation(platform("org.junit:junit-bom:5.8.2"))
     testImplementation("org.junit.jupiter:junit-jupiter-api")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
 
-    testImplementation("org.mockito:mockito-junit-jupiter:3.8.0")
-    testImplementation("org.mockito:mockito-core:3.8.0")
+    testImplementation("org.mockito:mockito-junit-jupiter:4.1.0")
+    testImplementation("org.mockito:mockito-core:4.1.0")
 }
 
 test {

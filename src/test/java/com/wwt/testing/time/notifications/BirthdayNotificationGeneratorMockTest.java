@@ -18,7 +18,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-public class BirthdayNotificationGeneratorMockTest {
+class BirthdayNotificationGeneratorMockTest {
     @Mock
     private Clock clock;
     @InjectMocks
