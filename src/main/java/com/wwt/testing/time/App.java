@@ -14,6 +14,7 @@ import java.util.stream.Stream;
 
 public class App implements Runnable {
     private static final Logger logger = LoggerFactory.getLogger(App.class);
+    private static final String LINE_SEPARATOR = "-".repeat(50);
     private final NotificationService notificationService;
     private final Stream<Person> people;
 
@@ -28,7 +29,7 @@ public class App implements Runnable {
     public void run() {
         String formattedDay = ZonedDateTime.now().format(DateTimeFormatter.ISO_LOCAL_DATE);
         logger.info("Generating notifications for today, {}", formattedDay);
-        logger.info("-".repeat(47));
+        logger.info(LINE_SEPARATOR);
 
         people
             .flatMap(notificationService::generate)
